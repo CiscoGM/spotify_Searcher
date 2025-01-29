@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, InputGroup, FormControl, Button, Row, Card } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 
-const CLIENT_ID = 'X';
-const CLIENT_SECRET = 'X';
+const CLIENT_ID = '5bdfe5e3bd1d425ebf93198c89ef623b';
+const CLIENT_SECRET = '37044d3a6b3a49a381410ed47974f7d0';
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -29,7 +29,6 @@ function App() {
 
 
   async function search() {
-   
     // Obtener el ID del artista
     const searchParameters = {
       method: 'GET',
@@ -44,7 +43,7 @@ function App() {
         .then(response => response.json())
         .then(data => data.artists.items[0].id);
 
-      console.log("El ID del artista es: " + artistID);
+      console.log("El ID del artista es: " + artistID); 
 
       // Obtener los álbumes del artista
       const returnedAlbums = await fetch("https://api.spotify.com/v1/artists/" + artistID + "/albums?include_groups=album&market=US&limit=50", searchParameters)
